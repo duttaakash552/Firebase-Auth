@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { auth } from '../firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
+import GoogleLogin from '../components/GoogleLogin';
 
 const Login = () => {
 
@@ -44,6 +45,7 @@ const Login = () => {
         />
         <button type="submit" className='login-button'>Login</button>
       </form>
+	  <GoogleLogin />
       <p>Need to Signup? <Link to="/signup">Create Account</Link></p>
     </div>
   )
