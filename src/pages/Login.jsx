@@ -17,9 +17,13 @@ const Login = () => {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       console.log(userCredential);
       const user = userCredential.user;
-      localStorage.setItem('token', user.accessToken);
-      localStorage.setItem('user', JSON.stringify(user));
-      navigate("/");
+	  if(user.emailVerified) {
+		localStorage.setItem('token', user.accessToken);
+		localStorage.setItem('user', JSON.stringify(user));
+		navigate("/");
+	  }else {
+		  alert("Please verify your email first before login");
+	  }
     } catch (error) {
       alert(error.message);
     }
