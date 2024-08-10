@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { auth } from '../firebase.js';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { Link,  useNavigate } from 'react-router-dom';
 
 const Signup = () => {
@@ -16,9 +16,18 @@ const Signup = () => {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       console.log(userCredential);
       const user = userCredential.user;
-      localStorage.setItem('token', user.accessToken);
-      localStorage.setItem('user', JSON.stringify(user));
-      navigate("/");
+	  // Send verification email
+      await sendEmailVerification(user);
+	  
+      // Inform the user
+      alert('A verification email has been sent to your email address. Please verify your email to complete the signup process.');
+	  if(user.emailVerified) {
+		  localStorage.setItem('token', user.accessToken);
+		  localStorage.setItem('user', JSON.stringify(user));
+		  
+		  // Redirect to login or home page
+		  navigate("/");
+	  }
     } catch (error) {
       console.error(error);
     }

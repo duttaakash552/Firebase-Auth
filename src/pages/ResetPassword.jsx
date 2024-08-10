@@ -1,5 +1,6 @@
 // src/components/ResetPassword.js
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { auth, sendPasswordResetEmail } from '../firebase';
 
 function ResetPassword() {
@@ -36,6 +37,7 @@ function ResetPassword() {
         </div>
         <button type="submit">Send Reset Link</button>
       </form>
+	  <p>Go to login page <Link to="/login">Login</Link></p>
       {message && <p>{message}</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
