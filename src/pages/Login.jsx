@@ -47,6 +47,7 @@ const Login = () => {
       </form>
 	  <GoogleLogin />
       <p>Need to Signup? <Link to="/signup">Create Account</Link></p>
+	  <p>Forgot Password? <Link to="/reset-password">Reset Password</Link></p>
     </div>
   )
 }
