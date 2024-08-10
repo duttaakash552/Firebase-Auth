@@ -11,6 +11,7 @@ import {
 import Protected from './components/Protected';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import ResetPassword from './pages/ResetPassword';
 import Home from './pages/Home';
 
 const router = createBrowserRouter(
@@ -18,6 +19,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<App />}>
       <Route path="signup" element={<Signup />} />
       <Route path="login" element={<Login />} />
+	  <Route path="reset-password" element={<ResetPassword />} />
       <Route path="/" element={<Protected />} >
         <Route path="/" index element={<Home />} />
       </Route>
